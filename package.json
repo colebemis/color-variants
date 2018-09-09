@@ -13,7 +13,9 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "commitmsg": "commitlint --edit",
+    "cm": "git-cz"
   },
   "lint-staged": {
     "*.ts": [
@@ -36,7 +38,11 @@
     "color": "^3.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
     "@types/jest": "^23.3.2",
+    "commitizen": "^2.10.1",
+    "cz-conventional-changelog": "^2.1.0",
     "husky": "^0.14.3",
     "jest": "^23.5.0",
     "lint-staged": "^7.2.2",
@@ -45,5 +51,10 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "typescript": "^3.0.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
