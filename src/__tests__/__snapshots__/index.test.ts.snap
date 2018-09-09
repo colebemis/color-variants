@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns expected array of colors 1`] = `
+Array [
+  "#FEEEE7",
+  "#FCC2AF",
+  "#FB8C76",
+  "#FD4C3C",
+  "#FF0000",
+  "#BF0000",
+  "#800000",
+]
+`;

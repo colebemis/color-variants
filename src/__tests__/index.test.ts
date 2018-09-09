@@ -1,5 +1,11 @@
-import { Greeter } from '../index'
+import colorVariants from '../index'
 
-test('My Greeter', () => {
-  expect(Greeter('Cole')).toBe('Hello Cole')
+it('returns expected array of colors', () => {
+  expect(
+    colorVariants({
+      base: '#f00',
+      light: { steps: 4, lighten: 0.9, hueShift: 20, saturate: -0.1 },
+      dark: { steps: 2, darken: 0.5, hueShift: -10, saturate: 0.5 },
+    })
+  ).toMatchSnapshot()
 })
