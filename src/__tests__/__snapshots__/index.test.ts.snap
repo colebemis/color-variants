@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`assigns default values 1`] = `
+Array [
+  "#FFFFFF",
+  "#FFBFBF",
+  "#FF8080",
+  "#FF4040",
+  "#FF0000",
+  "#800000",
+  "#000000",
+]
+`;
+
 exports[`returns expected array of colors 1`] = `
 Array [
   "#FEEEE7",

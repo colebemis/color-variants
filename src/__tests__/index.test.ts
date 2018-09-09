@@ -9,3 +9,13 @@ it('returns expected array of colors', () => {
     })
   ).toMatchSnapshot()
 })
+
+it('assigns default values', () => {
+  expect(
+    colorVariants({
+      base: '#f00',
+      light: { steps: 4 },
+      dark: { steps: 2 },
+    })
+  ).toMatchSnapshot()
+})
