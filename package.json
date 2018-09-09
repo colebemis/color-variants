@@ -1,6 +1,6 @@
 {
   "name": "color-variants",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "Generate light and dark variants of a color",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
