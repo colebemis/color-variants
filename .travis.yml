@@ -8,8 +8,10 @@ node_js:
   - 'node'
 script:
   - npm run lint
-  - npm run test
+  - npm run test:coverage
   - npm run build
+after_success:
+  - npx codecov
 deploy:
   provider: script
   skip_cleanup: true
