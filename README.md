@@ -36,6 +36,15 @@ colorVariants({
   light: { steps: 4, lighten: 0.9, hueShift: 20, saturate: -0.1 },
   dark: { steps: 2, darken: 0.5, hueShift: -10, saturate: 0.5 },
 })
+// [
+//   '#FEEEE7',
+//   '#FCC2AF',
+//   '#FB8C76',
+//   '#FD4C3C',
+//   '#FF0000',
+//   '#BF0000',
+//   '#800000',
+// ]
 ```
 
 ## Inspiration
