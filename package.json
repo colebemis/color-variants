@@ -1,18 +1,30 @@
 {
   "name": "color-variants",
   "version": "0.1.0",
-  "description": "",
+  "description": "Generate light and dark variants of a color",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "jest",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "precommit": "lint-staged"
   },
-  "keywords": [],
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "keywords": [
+    "color"
+  ],
   "author": "Cole Bemis <cole@colebemis.com>",
   "license": "MIT",
   "repository": {
@@ -25,7 +37,9 @@
   },
   "devDependencies": {
     "@types/jest": "^23.3.2",
+    "husky": "^0.14.3",
     "jest": "^23.5.0",
+    "lint-staged": "^7.2.2",
     "prettier": "^1.14.2",
     "ts-jest": "^23.1.4",
     "tslint": "^5.11.0",
