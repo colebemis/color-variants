@@ -15,6 +15,10 @@
   "keywords": [],
   "author": "Cole Bemis <cole@colebemis.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colebemis/color-variants.git"
+  },
   "dependencies": {
     "@types/color": "^3.0.0",
     "color": "^3.0.0"
