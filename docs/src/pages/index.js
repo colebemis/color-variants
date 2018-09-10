@@ -1,10 +1,10 @@
-import merge from 'lodash.merge';
-import set from 'lodash.set';
-import React from 'react';
-import ColorVariants from '../components/color-variants';
-import Controls from '../components/controls';
-import Layout from '../components/layout';
-import controls from '../controls.json';
+import merge from 'lodash.merge'
+import set from 'lodash.set'
+import React from 'react'
+import ColorVariants from '../components/color-variants'
+import Controls from '../components/controls'
+import Layout from '../components/layout'
+import controls from '../controls.json'
 
 class IndexPage extends React.Component {
   state = {
@@ -24,9 +24,7 @@ class IndexPage extends React.Component {
   }
 
   handleChange = (path, value) => {
-    this.setState(state =>
-      merge(state, set(state, path.join('.'), isNaN(value) ? value : Number(value)))
-    )
+    this.setState(state => merge(state, set(state, path.join('.'), value)))
   }
 
   render() {
@@ -38,7 +36,7 @@ class IndexPage extends React.Component {
         <pre>
           <code>npm install color-variants</code>
         </pre>
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
           <form style={{ width: '100%' }}>
             <Controls controls={controls} state={this.state} onChange={this.handleChange} />
           </form>
