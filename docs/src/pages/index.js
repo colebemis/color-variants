@@ -27,7 +27,7 @@ const initialState = {
 }
 
 class IndexPage extends React.Component {
-  state = merge(initialState, qs.parse(this.props.location.search.slice(1)))
+  state = merge(initialState, qs.parse((this.props.location.search || '').slice(1)))
 
   handleChange = (path, value) => {
     this.setState(
