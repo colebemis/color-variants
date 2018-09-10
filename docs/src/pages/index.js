@@ -1,36 +1,50 @@
-import merge from 'lodash.merge'
-import set from 'lodash.set'
-import React from 'react'
-import ColorVariants from '../components/color-variants'
-import Controls from '../components/controls'
-import Layout from '../components/layout'
-import controls from '../controls.json'
+import { version } from 'color-variants/package.json';
+import { navigateTo } from 'gatsby';
+import debounce from 'lodash.debounce';
+import merge from 'lodash.merge';
+import set from 'lodash.set';
+import qs from 'qs';
+import React from 'react';
+import ColorVariants from '../components/color-variants';
+import Controls from '../components/controls';
+import Layout from '../components/layout';
+import controls from '../controls.json';
+
+const initialState = {
+  base: '#f00',
+  light: {
+    steps: 4,
+    lighten: 0.8,
+    hueShift: 20,
+    saturate: 0.1,
+  },
+  dark: {
+    steps: 4,
+    darken: 0.8,
+    hueShift: -20,
+    saturate: 0.1,
+  },
+}
 
 class IndexPage extends React.Component {
-  state = {
-    base: '#f00',
-    light: {
-      steps: 4,
-      lighten: 0.8,
-      hueShift: 20,
-      saturate: 0.1,
-    },
-    dark: {
-      steps: 4,
-      darken: 0.8,
-      hueShift: -20,
-      saturate: 0.1,
-    },
-  }
+  state = merge(initialState, qs.parse(this.props.location.search.slice(1)))
 
   handleChange = (path, value) => {
-    this.setState(state => merge(state, set(state, path.join('.'), value)))
+    this.setState(
+      state => merge(state, set(state, path.join('.'), value)),
+      debounce(
+        () => navigateTo(`${this.props.location.pathname}?${qs.stringify(this.state)}`),
+        1000
+      )
+    )
   }
 
   render() {
     return (
       <Layout>
-        <h1>color-variants</h1>
+        <h1>
+          color-variants <small>v{version}</small>
+        </h1>
         <p>Generate light and dark variants of a color</p>
         <a href="https://github.com/colebemis/color-variants">GitHub</a>
         <pre>
