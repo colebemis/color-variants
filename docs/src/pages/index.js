@@ -1,5 +1,5 @@
 import { version } from 'color-variants/package.json';
-import { navigateTo } from 'gatsby';
+import { navigate } from 'gatsby';
 import debounce from 'lodash.debounce';
 import merge from 'lodash.merge';
 import set from 'lodash.set';
@@ -33,7 +33,7 @@ class IndexPage extends React.Component {
     this.setState(
       state => merge(state, set(state, path.join('.'), value)),
       debounce(
-        () => navigateTo(`${this.props.location.pathname}?${qs.stringify(this.state)}`),
+        () => navigate(`${this.props.location.pathname}?${qs.stringify(this.state)}`),
         1000
       )
     )
