@@ -6,11 +6,19 @@ function Controls({ controls, state, prevPath, onChange }) {
     const path = [...prevPath, name]
 
     if (!('type' in attrs)) {
-      return <Controls controls={attrs} state={state} prevPath={path} onChange={onChange} />
+      return (
+        <Controls
+          key={path.join('.')}
+          controls={attrs}
+          state={state}
+          prevPath={path}
+          onChange={onChange}
+        />
+      )
     }
 
     return (
-      <div>
+      <div key={path.join('.')}>
         <label>{path.join('.')}</label>
         <br />
         <input

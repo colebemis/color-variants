@@ -41,6 +41,7 @@ function ColorVariants({ options }) {
     <div style={{ width: '100%' }}>
       {colors.map((color, index) => (
         <div
+          key={color}
           style={{
             display: 'flex',
             justifyContent: 'space-between',
