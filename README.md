@@ -1,4 +1,4 @@
-# 🌓 color-variants
+# color-variants
 
 Generate light and dark variants of a color
 
