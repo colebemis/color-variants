@@ -1,14 +1,21 @@
-import { version } from 'color-variants/package.json';
-import { navigate } from 'gatsby';
-import debounce from 'lodash.debounce';
-import merge from 'lodash.merge';
-import set from 'lodash.set';
-import qs from 'qs';
-import React from 'react';
-import ColorVariants from '../components/color-variants';
-import Controls from '../components/controls';
-import Layout from '../components/layout';
-import controls from '../controls.json';
+import { version } from 'color-variants/package.json'
+import { navigate } from 'gatsby'
+import debounce from 'lodash.debounce'
+import merge from 'lodash.merge'
+import set from 'lodash.set'
+import qs from 'qs'
+import React from 'react'
+import ColorVariants from '../components/color-variants'
+import Controls from '../components/controls'
+import Layout from '../components/layout'
+import controls from '../controls.json'
+import Pre from '../components/pre'
+import Flex from '../components/flex'
+import Box from '../components/box'
+import Code from '../components/code'
+import Text from '../components/text'
+import Button from '../components/button'
+import Container from '../components/container'
 
 const initialState = {
   base: '#f00',
@@ -32,36 +39,54 @@ class IndexPage extends React.Component {
   handleChange = (path, value) => {
     this.setState(
       state => merge(state, set(state, path.join('.'), value)),
-      debounce(
-        () => navigate(`${this.props.location.pathname}?${qs.stringify(this.state)}`),
-        1000
-      )
+      debounce(() => navigate(`${this.props.location.pathname}?${qs.stringify(this.state)}`), 1000)
     )
   }
 
   render() {
     return (
       <Layout>
-        <h1>
-          color-variants <small>v{version}</small>
-        </h1>
-        <p>Generate light and dark variants of a color</p>
-        <a href="https://github.com/colebemis/color-variants">GitHub</a>
-        <pre>
-          <code>npm install color-variants</code>
-        </pre>
-        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-          <form style={{ width: '100%' }}>
-            <Controls controls={controls} state={this.state} onChange={this.handleChange} />
-          </form>
-          <pre style={{ width: '100%' }}>
-            <code>{getCode(this.state)}</code>
-          </pre>
-          <ColorVariants options={this.state} />
-        </div>
-        <footer style={{ padding: '16px 0' }}>
-          <a href="https://twitter.com/colebemis">Made by @colebemis</a>
-        </footer>
+        <Box mb={[6, null, 7]} py={[6, null, 7]} color="white" bg="black">
+          <Container>
+            <Text is="h1">color-variants</Text>
+            <Text is="p" pt={4} pb={6}>
+              Generate light and dark variants of a color
+            </Text>
+            <Button
+              is="a"
+              py={3}
+              px={4}
+              mr={5}
+              color="black"
+              bg="white"
+              href="https://github.com/colebemis/color-variants"
+            >
+              GitHub
+            </Button>
+
+            <Code>npm i color-variants</Code>
+          </Container>
+        </Box>
+        <Container>
+          <Flex alignItems="flex-start" flexDirection={['column', null, 'row']} m={-3}>
+            <Box width={[1, null, 1 / 3]} p={3}>
+              <form style={{ width: '100%' }}>
+                <Controls controls={controls} state={this.state} onChange={this.handleChange} />
+              </form>
+            </Box>
+            <Box width={[1, null, 1 / 3]} p={3}>
+              <Pre width={1}>{getCode(this.state)}</Pre>
+            </Box>
+            <Box width={[1, null, 1 / 3]} p={3}>
+              <ColorVariants options={this.state} />
+            </Box>
+          </Flex>
+        </Container>
+        <Box is="footer" mt={[6, null, 7]} py={6} borderTop="1px solid" borderColor="lightgray">
+          <Container>
+            <a href="https://twitter.com/colebemis">Made by @colebemis</a>
+          </Container>
+        </Box>
       </Layout>
     )
   }

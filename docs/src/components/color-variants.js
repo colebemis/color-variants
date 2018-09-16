@@ -1,6 +1,9 @@
-import React from 'react'
-import colorVariants from 'color-variants'
 import Color from 'color'
+import colorVariants from 'color-variants'
+import React from 'react'
+import Box from './box'
+import Flex from './flex'
+import Code from './code'
 
 function ColorVariants({ options }) {
   let colors = []
@@ -12,49 +15,38 @@ function ColorVariants({ options }) {
         steps: Number(options.light.steps),
         lighten: Number(options.light.lighten),
         hueShift: Number(options.light.hueShift),
-        saturate: Number(options.light.saturate)
+        saturate: Number(options.light.saturate),
       },
       dark: {
         steps: Number(options.dark.steps),
         darken: Number(options.dark.darken),
         hueShift: Number(options.dark.hueShift),
-        saturate: Number(options.dark.saturate)
-      }
+        saturate: Number(options.dark.saturate),
+      },
     })
   } catch (error) {
     return (
-      <div
-        style={{
-          boxSizing: 'border-box',
-          width: '100%',
-          padding: 16,
-          color: 'white',
-          background: 'red',
-        }}
-      >
-        <code>Error: {error.message}</code>
-      </div>
+      <Box width={1} p={4} color="white" bg="red">
+        Error: {error.message}
+      </Box>
     )
   }
 
   return (
-    <div style={{ width: '100%' }}>
+    <Box width={1} borderRadius={1} style={{ overflow: 'hidden' }}>
       {colors.map((color, index) => (
-        <div
-          key={color}
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            padding: 16,
-            color: Color(color).isLight() ? 'black' : 'white',
-            backgroundColor: color,
-          }}
+        <Flex
+          key={`${index} ${color}`}
+          justifyContent="space-between"
+          p={4}
+          color={Color(color).isLight() ? 'black' : 'white'}
+          bg={color}
         >
-          <span>{index}</span>
-          <span>{color}</span>
-        </div>
+          <Code>{index}</Code>
+          <Code>{color}</Code>
+        </Flex>
       ))}
-    </div>
+    </Box>
   )
 }
 

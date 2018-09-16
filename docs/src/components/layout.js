@@ -1,7 +1,22 @@
-import { graphql, StaticQuery } from 'gatsby';
-import { node } from 'prop-types';
-import React from 'react';
-import Helmet from 'react-helmet';
+import { graphql, StaticQuery } from 'gatsby'
+import { node } from 'prop-types'
+import React from 'react'
+import Helmet from 'react-helmet'
+import { injectGlobal, ThemeProvider } from 'styled-components'
+import theme from '../theme'
+
+injectGlobal({
+  '*, *:before, *:after': {
+    boxSizing: 'inherit',
+    transition: 'inherit',
+  },
+
+  body: {
+    boxSizing: 'border-box',
+    margin: 0,
+    fontFamily: theme.fonts.sans,
+  },
+})
 
 function Layout({ children }) {
   return (
@@ -26,14 +41,9 @@ function Layout({ children }) {
           >
             <html lang="en" />
           </Helmet>
-          <div
-            style={{
-              margin: '0 auto',
-              maxWidth: 960,
-            }}
-          >
-            {children}
-          </div>
+          <ThemeProvider theme={theme}>
+            <div>{children}</div>
+          </ThemeProvider>
         </>
       )}
     />
