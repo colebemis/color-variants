@@ -1,4 +1,3 @@
-import { version } from 'color-variants/package.json'
 import { navigate } from 'gatsby'
 import debounce from 'lodash.debounce'
 import merge from 'lodash.merge'

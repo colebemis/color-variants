@@ -22,7 +22,7 @@ function Controls({ controls, state, prevPath, onChange }) {
 
     return (
       <Box key={path.join('.')} mb={5}>
-        <Text is="label" display="inline-block" pb={2} fontWeight="bold" for={path.join('.')}>
+        <Text is="label" display="inline-block" pb={2} fontWeight="bold" htmlFor={path.join('.')}>
           {path.join('.')}
         </Text>
         <br />
