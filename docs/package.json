@@ -1,7 +1,6 @@
 {
   "name": "docs",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "color": "^3.0.0",
     "color-variants": "^1.0.1",
