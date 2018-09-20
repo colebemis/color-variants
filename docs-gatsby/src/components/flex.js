@@ -1,5 +1,5 @@
 import system from 'system-components'
-import Box from './Box'
+import Box from './box'
 
 const Flex = system(
   {

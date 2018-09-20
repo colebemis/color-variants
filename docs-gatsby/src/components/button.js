@@ -1,4 +1,4 @@
-import system from 'system-components'
+import system from '@rebass/components'
 
 const Button = system(
   {},

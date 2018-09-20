@@ -1,8 +1,8 @@
 import get from 'lodash.get'
 import React from 'react'
-import Box from './Box'
-import Input from './Input'
-import Text from './Text'
+import Box from './box'
+import Input from './input'
+import Text from './text'
 
 function Controls({ controls, state, prevPath, onChange }) {
   return Object.entries(controls).map(([name, attrs]) => {
